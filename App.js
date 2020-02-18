@@ -27,16 +27,15 @@ class HomeScreen extends Component {
       this.setState({ nonValidInput: false });
       const { username, password } = this.state;
 
-      firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.password).then(() => this.props.navigation.navigate('Age')).catch(
+      firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.password).then(() => this.props.navigation.navigate('Age')).catch(() =>
         Alert.alert(
           'Error',
-          'Los datos no son correctos',
+          'Datos incorrectos',
           [
             { text: 'Ok' }
           ],
           { cancelable: false }
-        )
-      );
+        ));
     } else { 
       this.setState({ nonValidInput: true });
     }
